@@ -125,7 +125,7 @@ class PakarTHT:
         self.fon1 = ('Lexend Bold', 15)
         self.fon2 = ('Lexend ExtraBold', 20)
 
-        self.judul = CTkLabel(master=window, font=self.fon2)
+        self.judul = CTkLabel(master=window, font=self.fon2, text="Dokter Tirta")
         self.judul.pack(pady=(0, 20))
 
         self.pertanyaan = CTkLabel(master=window, font=self.fon1)
