@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Diagnosis | Klinik Margono</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <div class="logo-icon">+</div>
+            <h1>Hasil <span class="highlight">Analisis</span></h1>
+        </div>
+        <a href="/" class="btn-back">← Kembali ke Form Checkup</a>
+    </header>
+
+    <main class="container result-container">
+
+        <div class="card result-card">
+            <div class="card-header">
+                <h2>Kesimpulan Diagnosis Sistem Pakar (Dr. Tirta)</h2>
+            </div>
+            <div class="card-body">
+                <div class="diagnosis-box">
+                    <h3>{{ diagnosis }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Indikator Kesehatan Dasar (Dr. Gia)</h2>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">Skor Crisp beserta status
+                    klasifikasi keanggotaan tertingginya.</p>
+            </div>
+            <div class="card-body">
+                <div class="fuzzy-grid">
+                    {% for key, val in crisp_outputs.items() %}
+                    <div class="fuzzy-item">
+                        <span class="fuzzy-label">{{ name_map[key] }}</span>
+                        <span class="fuzzy-value">{{ "%.2f"|format(val) }}</span>
+
+                        <div class="fuzzy-statuses">
+                            {% for st_key, st_val in state.items() %}
+                            {% if st_key.lower().startswith(key.lower() ~ '_') and st_val == 1 %}
+                            <span class="fuzzy-status">{{ st_key.split('_')[1] }}</span>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

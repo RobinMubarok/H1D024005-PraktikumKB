@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Checkup Mandiri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <div class="logo-icon">+</div>
+            <h1>Klinik <span class="highlight">Margono</span> Checkup</h1>
+        </div>
+        <p class="subtitle">Sistem Pakar Deteksi Mandiri Kesehatan Jantung & Paru</p>
+    </header>
+
+    <main class="container">
+        <form action="/compute" method="POST" class="mcu-form">
+            <div class="form-grid">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Tanda Vital (Vital Signs)</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <label for="tensi_sys">Tensi Sistolik (mmHg)</label>
+                            <input type="number" step="any" id="tensi_sys" name="tensi_sys" required
+                                placeholder="Contoh: 120">
+                        </div>
+                        <div class="input-group">
+                            <label for="tensi_dia">Tensi Diastolik (mmHg)</label>
+                            <input type="number" step="any" id="tensi_dia" name="tensi_dia" required
+                                placeholder="Contoh: 80">
+                        </div>
+                        <div class="input-group">
+                            <label for="hr">Heart Rate (bpm)</label>
+                            <input type="number" step="any" id="hr" name="hr" required placeholder="Contoh: 75">
+                        </div>
+                        <div class="input-group">
+                            <label for="rr">Respiration Rate (x/menit)</label>
+                            <input type="number" step="any" id="rr" name="rr" required placeholder="Contoh: 16">
+                        </div>
+                        <div class="input-group">
+                            <label for="spo2">Saturasi Oksigen / SpO2 (%)</label>
+                            <input type="number" step="any" id="spo2" name="spo2" required placeholder="Contoh: 98">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Fisik & Metabolik</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <label for="bmi">BMI (kg/m²)</label>
+                            <input type="number" step="any" id="bmi" name="bmi" required placeholder="Contoh: 22.5">
+                        </div>
+                        <div class="input-group">
+                            <label for="mets">Skor METs</label>
+                            <input type="number" step="any" id="mets" name="mets" required placeholder="Contoh: 10">
+                        </div>
+                        <div class="input-group">
+                            <label for="max_hr">% Max HR Tercapai</label>
+                            <input type="number" step="any" id="max_hr" name="max_hr" required placeholder="Contoh: 85">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card md-col-span-2">
+                    <div class="card-header">
+                        <h2>EKG & Ekokardiografi</h2>
+                    </div>
+                    <div class="card-body grid-2">
+                        <div class="input-group">
+                            <label for="pr_int">PR Interval (ms)</label>
+                            <input type="number" step="any" id="pr_int" name="pr_int" required
+                                placeholder="Contoh: 150">
+                        </div>
+                        <div class="input-group">
+                            <label for="qrs_dur">QRS Duration (ms)</label>
+                            <input type="number" step="any" id="qrs_dur" name="qrs_dur" required
+                                placeholder="Contoh: 90">
+                        </div>
+                        <div class="input-group">
+                            <label for="ctr">Cardiothoracic Ratio / CTR (%)</label>
+                            <input type="number" step="any" id="ctr" name="ctr" required placeholder="Contoh: 45">
+                        </div>
+                        <div class="input-group">
+                            <label for="ef">Ejection Fraction (%)</label>
+                            <input type="number" step="any" id="ef" name="ef" required placeholder="Contoh: 60">
+                        </div>
+                        <div class="input-group">
+                            <label for="fs">Fractional Shortening (%)</label>
+                            <input type="number" step="any" id="fs" name="fs" required placeholder="Contoh: 30">
+                        </div>
+                        <div class="input-group">
+                            <label for="lvidd">LVIDd (mm)</label>
+                            <input type="number" step="any" id="lvidd" name="lvidd" required placeholder="Contoh: 48">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="submit-container">
+                <button type="submit" class="btn-submit">Mulai Analisis Sistem Pakar ➔</button>
+            </div>
+        </form>
+    </main>
+</body>
+
+</html>
